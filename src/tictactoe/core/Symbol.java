@@ -3,7 +3,7 @@ package tictactoe.core;
 public enum Symbol {
     X('X'), O('O'), NONE(' ');
 
-    private char charSymbol;
+    private final char charSymbol;
 
     Symbol(char charSymbol) {
         this.charSymbol = charSymbol;
