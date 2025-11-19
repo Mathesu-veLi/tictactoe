@@ -3,6 +3,7 @@ package tictactoe.core;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Board {
     public static final int SIZE = 3;
@@ -11,7 +12,7 @@ public class Board {
 
     public Board() {
         for (Symbol[] symbols : matrix) {
-            Arrays.fill(symbols, Symbol.X);
+            Arrays.fill(symbols, Symbol.NONE);
         }
     }
 
@@ -33,5 +34,20 @@ public class Board {
         }
 
         return sw.toString();
+    }
+
+    public void update(Symbol symbol, Coordinate coordinate) {
+        Objects.requireNonNull(symbol);
+        Objects.requireNonNull(coordinate);
+
+        if(symbol == Symbol.NONE) {
+            throw new IllegalArgumentException("None cannot be added to board");
+        }
+
+        if (matrix[coordinate.i()][coordinate.j()] != Symbol.NONE) {
+            throw new IllegalArgumentException("Play is not possible");
+        }
+
+        matrix[coordinate.i()][coordinate.j()] = symbol;
     }
 }
