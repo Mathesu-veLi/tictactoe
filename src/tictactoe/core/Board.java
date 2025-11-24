@@ -36,7 +36,7 @@ public class Board {
         return sw.toString();
     }
 
-    public void update(Symbol symbol, Coordinate coordinate) {
+    public Symbol update(Symbol symbol, Coordinate coordinate) {
         Objects.requireNonNull(symbol);
         Objects.requireNonNull(coordinate);
 
@@ -49,5 +49,11 @@ public class Board {
         }
 
         matrix[coordinate.i()][coordinate.j()] = symbol;
+        return findSequence();
+    }
+
+    private Symbol findSequence() {
+        //TODO
+        return null;
     }
 }

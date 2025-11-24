@@ -8,21 +8,24 @@ public class Game {
     private final Players players = new Players();
 
     public void start() {
-        while(true) {
+        Symbol winner = null;
+
+        while(winner == null) {
             Output.writeNewLine();
             Output.write(board);
 
-            play(players.next());
+            winner = play(players.next());
         }
+
+        Output.write(String.format("%s is the winner!", winner));
     }
 
-    private void play(Symbol symbol) {
+    private Symbol play(Symbol symbol) {
         while(true) {
             try {
                 String play = Input.read(String.format("'%s' Play (Row, Col) =>", symbol));
                 Coordinate coordinate = Coordinate.parse(play);
-                board.update(symbol, coordinate);
-                break;
+                return board.update(symbol, coordinate);
             } catch(RuntimeException e) {
                 Output.write("ERROR: " + e.getMessage());
             }
