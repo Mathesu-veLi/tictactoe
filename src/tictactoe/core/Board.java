@@ -11,7 +11,7 @@ public class Board {
     private final Symbol[][] matrix = new Symbol[SIZE][SIZE];
 
     public Board() {
-        for (Symbol[] symbols : matrix) {
+        for(Symbol[] symbols : matrix) {
             Arrays.fill(symbols, Symbol.NONE);
         }
     }
@@ -21,10 +21,10 @@ public class Board {
         StringWriter sw = new StringWriter();
         PrintWriter out = new PrintWriter(sw);
 
-        for (int i = 0; i < SIZE; i++) {
+        for(int i = 0; i < SIZE; i++) {
             boolean first = true;
-            for (int j = 0; j < SIZE; j++) {
-                if (!first) {
+            for(int j = 0; j < SIZE; j++) {
+                if(!first) {
                     out.print(" | ");
                 }
                 out.print(matrix[i][j]);
@@ -44,7 +44,7 @@ public class Board {
             throw new IllegalArgumentException("None cannot be added to board");
         }
 
-        if (matrix[coordinate.i()][coordinate.j()] != Symbol.NONE) {
+        if(matrix[coordinate.i()][coordinate.j()] != Symbol.NONE) {
             throw new IllegalArgumentException("Play is not possible");
         }
 
@@ -55,5 +55,16 @@ public class Board {
     private Symbol findSequence() {
         //TODO
         return null;
+    }
+
+    public boolean isFull() {
+        for(int i = 0; i < SIZE; i++) {
+            for(int j = 0; j < SIZE; j++) {
+                if(matrix[i][j] == Symbol.NONE) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
