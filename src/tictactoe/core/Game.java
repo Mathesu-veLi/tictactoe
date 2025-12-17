@@ -19,10 +19,10 @@ public class Game {
 
         Output.write(board);
 
-        if(board.isFull()) {
-            Output.write("No winner");
-        } else {
+        if(winner != null) {
             Output.write(String.format("%s is the winner!", winner));
+        } else if(board.isFull()) {
+            Output.write("No winner");
         }
     }
 
