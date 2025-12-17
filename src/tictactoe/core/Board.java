@@ -52,11 +52,6 @@ public class Board {
         return findSequence();
     }
 
-    private Symbol findSequence() {
-        //TODO
-        return null;
-    }
-
     public boolean isFull() {
         for(int i = 0; i < SIZE; i++) {
             for(int j = 0; j < SIZE; j++) {
@@ -66,5 +61,51 @@ public class Board {
             }
         }
         return true;
+    }
+
+    private Symbol findSequence() {
+        Symbol symbol = findSequenceInRows();
+        if(symbol != null)
+            return symbol;
+
+        symbol = findSequenceInColumns();
+        if(symbol != null)
+            return symbol;
+
+        return findSequenceInDiagonals();
+    }
+
+    private Symbol findSequenceInRows() {
+        for(int i = 0; i < SIZE; i++) {
+            Symbol symbol = findSequenceInRow(i);
+            if(symbol != null)
+                return symbol;
+        }
+        return null;
+    }
+
+    private Symbol findSequenceInRow(int i) {
+        return matrix[i][0] == matrix[i][1] && matrix[i][1] == matrix[i][2] && matrix[i][0] != Symbol.NONE ?
+               matrix[i][0] :
+               null;
+    }
+
+    private Symbol findSequenceInColumns() {
+        for(int j = 0; j < SIZE; j++) {
+            Symbol symbol = findSequenceInRow(j);
+            if(symbol != null)
+                return symbol;
+        }
+        return null;
+    }
+
+    private Symbol findSequenceInColumn(int j) {
+        return matrix[0][j] == matrix[1][j] && matrix[1][j] == matrix[2][j] && matrix[0][j] != Symbol.NONE ?
+               matrix[0][j] :
+               null;
+    }
+
+    private Symbol findSequenceInDiagonals() {
+
     }
 }
