@@ -92,7 +92,7 @@ public class Board {
 
     private Symbol findSequenceInColumns() {
         for(int j = 0; j < SIZE; j++) {
-            Symbol symbol = findSequenceInRow(j);
+            Symbol symbol = findSequenceInColumn(j);
             if(symbol != null)
                 return symbol;
         }

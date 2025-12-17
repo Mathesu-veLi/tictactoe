@@ -17,6 +17,8 @@ public class Game {
             winner = play(players.next());
         }
 
+        Output.write(board);
+
         if(board.isFull()) {
             Output.write("No winner");
         } else {
