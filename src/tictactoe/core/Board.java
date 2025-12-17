@@ -106,6 +106,12 @@ public class Board {
     }
 
     private Symbol findSequenceInDiagonals() {
+        if(matrix[0][0] == matrix[1][1] && matrix[1][1] == matrix[2][2] && matrix[0][0] != Symbol.NONE)
+            return matrix[0][0];
 
+        if(matrix[0][2] == matrix[1][1] && matrix[1][1] == matrix[2][0] && matrix[0][2] != Symbol.NONE)
+            return matrix[0][2];
+
+        return null;
     }
 }
